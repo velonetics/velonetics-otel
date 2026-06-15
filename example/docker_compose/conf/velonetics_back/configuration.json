@@ -1,0 +1,188 @@
+{
+    "version": 3,
+    "name": "Back Velonetics",
+    "port": 44446,
+    "cache_ttl": "3600s",
+    "timeout": "2500ms",
+    "host": [ "http://velonetics_back:44446/" ],
+    "debug_endpoint": true,
+    "endpoints": [
+        {
+            "endpoint": "/back_fake/{something}",
+            "method": "GET",
+            "concurrent_calls": 3,
+            "backend": [
+                {
+                    "url_pattern": "/__debug/{something}",
+                    "mapping": {
+                        "message": "backend1"
+                    }
+                },
+                {
+                    "url_pattern": "/__debug/{something}/{something}",
+                    "mapping": {
+                        "message": "backend2"
+                    }
+                }
+            ]
+        },
+        {
+            "endpoint": "/back_combination/{id}",
+            "extra_config": {
+            "telemetry/opentelemetry": {
+                "proxy": {
+                    "metrics_static_attributes": [
+                        {
+                            "key": "my_metric_proxy_override_attr",
+                            "value": "my_metric_proxy_override_val"
+                        }
+                    ],
+                    ,
+                    "traces_static_attributes": [
+                        {
+                            "key": "my_trace_proxy_override_attr",
+                            "value": "my_trace_proxy_override_val"
+                        }
+                    ]
+                }
+            },
+            "backend": [
+                {
+                    "host": [
+                        "https://jsonplaceholder.typicode.com"
+                    ],
+                    "url_pattern": "/posts?userId={id}",
+                    "is_collection": true,
+                    "mapping": {
+                        "collection": "posts"
+                    },
+                    "extra_config": {
+                        "telemetry/opentelemetry": {
+                            "backend": {
+                                "metrics": {
+                                    "static_attributes": [
+                                        {
+                                            "key": "my_metric_backend_override_attr",
+                                            "value": "my_metric_backend_override_val"
+                                        }
+                                    ]
+                                },
+                                "traces": {
+                                    "static_attributes": [
+                                        {
+                                            "key": "my_trace_backend_override_attr",
+                                            "value": "my_trace_backend_override_val"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "host": [
+                        "https://jsonplaceholder.typicode.com"
+                    ],
+                    "url_pattern": "/users/{id}",
+                    "mapping": {
+                        "email": "personal_email"
+                    }
+                }
+            ]
+        }
+    ],
+    "extra_config": {
+        "telemetry/opentelemetry": {
+            "service_name": "velonetics_backend_service",
+            "metric_reporting_period": 1,
+            "trace_sample_rate": 1,
+            "layers": {
+                "global": {
+                    "disable_metrics": false,
+                    "disable_traces": false,
+                    "disable_propagation": false,
+                    "metrics_static_attributes": [
+                        {
+                            "key": "my_metric_global_attr",
+                            "value": "my_metric_global_val"
+                        }
+                    ],
+                    "traces_static_attributes": [
+                        {
+                            "key": "my_trace_global_attr",
+                            "value": "my_trace_global_val"
+                        }
+                    ]
+                },
+                "proxy": {
+                    "disable_metrics": false,
+                    "disable_traces": false,
+                    "metrics_static_attributes": [
+                        {
+                            "key": "my_metric_proxy_attr",
+                            "value": "my_metric_proxy_val"
+                        }
+                    ],
+                    "traces_static_attributes": [
+                        {
+                            "key": "my_trace_proxy_attr",
+                            "value": "my_trace_proxy_val"
+                        }
+                    ]
+                },
+                "backend": {
+                    "metrics": {
+                        "disable_stage": false,
+                        "round_trip": true,
+                        "read_payload": true,
+                        "detailed_connection": true,
+                        "static_attributes": [
+                            {
+                                "key": "my_metric_backend_attr",
+                                "value": "my_metric_backend_val"
+                            }
+                        ]
+                    },
+                    "traces": {
+                        "disable_stage": false,
+                        "round_trip": true,
+                        "read_payload": true,
+                        "detailed_connection": true,
+                        "static_attributes": [
+                            {
+                                "key": "my_trace_backend_attr",
+                                "value": "my_trace_backend_val"
+                            }
+                        ]
+                    }
+                }
+            },
+            "exporters": {
+                "prometheus": [
+                    {
+                        "name": "local_prometheus",
+                        "port": 9090,
+                        "process_metrics": true,
+                        "go_metrics": true
+                    }
+                ],
+                "otlp": [
+                    {
+                        "name": "local_tempo",
+                        "host": "tempo",
+                        "port": 4317,
+                        "use_http": false,
+                        "disable_metrics": true
+                    },
+                    {
+                        "name": "local_jaeger",
+                        "host": "jaeger",
+                        "port": 4317,
+                        "use_http": false,
+			"disable_metrics": true
+                    }
+                ]
+            }
+        }
+    }
+}
