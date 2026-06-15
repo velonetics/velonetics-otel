@@ -4,7 +4,7 @@ go 1.25.0
 
 require (
 	github.com/gin-gonic/gin v1.9.1
-	github.com/velonetics/lura/v2 v2.11.0
+	github.com/velonetics/lura/v2 v2.0.0
 	github.com/prometheus/client_golang v1.18.0
 	go.opentelemetry.io/contrib/propagators/autoprop v0.58.0
 	go.opentelemetry.io/otel v1.43.0
@@ -39,7 +39,7 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.28.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.9 // indirect
-	github.com/velonetics/flatmap v1.2.0 // indirect
+	github.com/velonetics/flatmap v1.0.0 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/matttproud/golang_protobuf_extensions/v2 v2.0.0 // indirect
