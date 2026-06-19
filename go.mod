@@ -1,4 +1,4 @@
-module github.com/pucora/velonetics-otel
+module github.com/pucora/pucora-otel
 
 go 1.25.0
 

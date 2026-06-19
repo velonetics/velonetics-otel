@@ -1,7 +1,7 @@
 package state
 
 import (
-	"github.com/pucora/velonetics-otel/config"
+	"github.com/pucora/pucora-otel/config"
 	luraconfig "github.com/pucora/lura/v2/config"
 )
 

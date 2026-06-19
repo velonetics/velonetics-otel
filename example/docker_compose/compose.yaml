@@ -3,27 +3,27 @@ volumes:
   vol_grafana:
   vol_prometheus:
 services:
-  velonetics_front:
-    domainname: velonetics_front
-    image: velonetics-otel-example:latest
+  pucora_front:
+    domainname: pucora_front
+    image: pucora-otel-example:latest
     volumes:
-      - "./conf/velonetics_front:/etc/pucora"
+      - "./conf/pucora_front:/etc/pucora"
     ports:
       - "44444:44444"
       - "9091:9090"
-  velonetics_middle:
-    domainname: velonetics_middle
-    image: velonetics-otel-example:latest
+  pucora_middle:
+    domainname: pucora_middle
+    image: pucora-otel-example:latest
     volumes:
-      - "./conf/velonetics_middle:/etc/pucora"
+      - "./conf/pucora_middle:/etc/pucora"
     ports:
       - "44445:44445"
       - "9092:9090"
-  velonetics_back:
-    domainname: velonetics_back
-    image: velonetics-otel-example:latest
+  pucora_back:
+    domainname: pucora_back
+    image: pucora-otel-example:latest
     volumes:
-      - "./conf/velonetics_back:/etc/pucora"
+      - "./conf/pucora_back:/etc/pucora"
     ports:
       - "44446:44446"
       - "9093:9090"
@@ -55,9 +55,9 @@ services:
       - "./conf/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
       - "vol_prometheus:/prometheus"
     depends_on:
-      - velonetics_front
-      - velonetics_middle
-      - velonetics_back
+      - pucora_front
+      - pucora_middle
+      - pucora_back
   grafana:
     image: grafana/grafana:latest
     domainname: grafana

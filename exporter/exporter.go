@@ -11,9 +11,9 @@ import (
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 
-	"github.com/pucora/velonetics-otel/config"
-	"github.com/pucora/velonetics-otel/exporter/otelcollector"
-	"github.com/pucora/velonetics-otel/exporter/prometheus"
+	"github.com/pucora/pucora-otel/config"
+	"github.com/pucora/pucora-otel/exporter/otelcollector"
+	"github.com/pucora/pucora-otel/exporter/prometheus"
 )
 
 // MetricReader is the interface required in order to

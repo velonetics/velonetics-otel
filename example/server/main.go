@@ -31,13 +31,13 @@ import (
 	"github.com/pucora/lura/v2/config"
 	"github.com/pucora/lura/v2/logging"
 	"github.com/pucora/lura/v2/proxy"
-	veloneticsgin "github.com/pucora/lura/v2/router/gin"
+	pucoragin "github.com/pucora/lura/v2/router/gin"
 	"github.com/pucora/lura/v2/transport/http/client"
 	"github.com/pucora/lura/v2/transport/http/server"
 
-	kotel "github.com/pucora/velonetics-otel"
-	otellura "github.com/pucora/velonetics-otel/lura"
-	otelgin "github.com/pucora/velonetics-otel/router/gin"
+	kotel "github.com/pucora/pucora-otel"
+	otellura "github.com/pucora/pucora-otel/lura"
+	otelgin "github.com/pucora/pucora-otel/router/gin"
 )
 
 func main() {
@@ -93,9 +93,9 @@ func main() {
 	defaultPF := proxy.NewDefaultFactory(bf, logger)
 	pf := otellura.ProxyFactory(defaultPF)
 
-	handlerF := otelgin.New(veloneticsgin.EndpointHandler)
+	handlerF := otelgin.New(pucoragin.EndpointHandler)
 
-	runserverChain := veloneticsgin.RunServerFunc(
+	runserverChain := pucoragin.RunServerFunc(
 		otellura.GlobalRunServer(logger, server.RunServer))
 
 	engine := gin.Default()
@@ -105,7 +105,7 @@ func main() {
 	engine.ContextWithFallback = true // <- this is important for trace span propagation
 
 	// setup the pucora router
-	routerFactory := veloneticsgin.NewFactory(veloneticsgin.Config{
+	routerFactory := pucoragin.NewFactory(pucoragin.Config{
 		Engine:         engine,
 		ProxyFactory:   pf,
 		Middlewares:    []gin.HandlerFunc{},

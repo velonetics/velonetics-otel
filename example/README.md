@@ -22,7 +22,7 @@ prometheus metrics).
 So, you should run:
 
 ```
-export VELONETICS_LOCAL_IP="{your non localhost machine ip}"
+export PUCORA_LOCAL_IP="{your non localhost machine ip}"
 make conf
 make run
 ```
@@ -32,16 +32,16 @@ make run
 By running the example, you spawn 3 servers based on the Lura framework (we could
 say the example is a super simplified Pucora CE).
 
-- `velonetics_front`: the one to receive the requests
-- `velonetics_middle`: a middle pucora to check how traces are propagated
-- `velonetics_back`: a back pucora that makes request to `https://jsonplaceholder.typicode.com` to
+- `pucora_front`: the one to receive the requests
+- `pucora_middle`: a middle pucora to check how traces are propagated
+- `pucora_back`: a back pucora that makes request to `https://jsonplaceholder.typicode.com` to
     get some dummy data.
     
 The config files can be found in:
 
-- [./docker_compose/conf/velonetics_*](./docker_compose/conf/) directories for the dockerized version of the example.
-- [./docker_compose/conf.local/velonetics_*](./docker_compose/conf.local/) directories for running
-    the veloneticss in the local environment.
+- [./docker_compose/conf/pucora_*](./docker_compose/conf/) directories for the dockerized version of the example.
+- [./docker_compose/conf.local/pucora_*](./docker_compose/conf.local/) directories for running
+    the pucoras in the local environment.
 
 
 # Execute some requests

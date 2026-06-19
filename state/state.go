@@ -19,11 +19,11 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	nooptrace "go.opentelemetry.io/otel/trace/noop"
 
-	"github.com/pucora/velonetics-otel/exporter"
+	"github.com/pucora/pucora-otel/exporter"
 )
 
 const (
-	providerName string = "io.pucora.velonetics-otel"
+	providerName string = "io.pucora.pucora-otel"
 )
 
 // OTEL defines the interface to obtain observability

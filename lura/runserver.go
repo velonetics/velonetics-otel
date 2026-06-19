@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 
-	kotelhttpserver "github.com/pucora/velonetics-otel/http/server"
-	"github.com/pucora/velonetics-otel/state"
+	kotelhttpserver "github.com/pucora/pucora-otel/http/server"
+	"github.com/pucora/pucora-otel/state"
 	luraconfig "github.com/pucora/lura/v2/config"
 	"github.com/pucora/lura/v2/logging"
 	luragin "github.com/pucora/lura/v2/router/gin"

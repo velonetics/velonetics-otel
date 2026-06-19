@@ -22,9 +22,9 @@ import (
 	lcore "github.com/pucora/lura/v2/core"
 	"github.com/pucora/lura/v2/logging"
 
-	"github.com/pucora/velonetics-otel/config"
-	"github.com/pucora/velonetics-otel/exporter"
-	"github.com/pucora/velonetics-otel/state"
+	"github.com/pucora/pucora-otel/config"
+	"github.com/pucora/pucora-otel/exporter"
+	"github.com/pucora/pucora-otel/state"
 )
 
 // Register uses the ServiceConfig to instantiate the configured exporters.

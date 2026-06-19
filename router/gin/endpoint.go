@@ -4,16 +4,16 @@ import (
 	"github.com/gin-gonic/gin"
 	luraconfig "github.com/pucora/lura/v2/config"
 	"github.com/pucora/lura/v2/proxy"
-	veloneticsgin "github.com/pucora/lura/v2/router/gin"
+	pucoragin "github.com/pucora/lura/v2/router/gin"
 	"go.opentelemetry.io/otel/attribute"
 
-	kotelconfig "github.com/pucora/velonetics-otel/config"
-	kotelserver "github.com/pucora/velonetics-otel/http/server"
-	otelstate "github.com/pucora/velonetics-otel/state"
+	kotelconfig "github.com/pucora/pucora-otel/config"
+	kotelserver "github.com/pucora/pucora-otel/http/server"
+	otelstate "github.com/pucora/pucora-otel/state"
 )
 
 // New wraps a handler factory adding some simple instrumentation to the generated handlers
-func New(hf veloneticsgin.HandlerFactory) veloneticsgin.HandlerFactory {
+func New(hf pucoragin.HandlerFactory) pucoragin.HandlerFactory {
 	return func(cfg *luraconfig.EndpointConfig, p proxy.Proxy) gin.HandlerFunc {
 		otelCfg := otelstate.GlobalConfig()
 		if otelCfg == nil {

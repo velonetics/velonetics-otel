@@ -47,7 +47,7 @@ func newTestOTEL() *testOTEL {
 	return &testOTEL{
 		tracer:         tracer,
 		tracerProvider: tracerProvider,
-		meter:          metricProvider.Meter("io.pucora.velonetics-otel"),
+		meter:          metricProvider.Meter("io.pucora.pucora-otel"),
 		metricProvider: metricProvider,
 		metricReader:   metricReader,
 		spanRecorder:   spanRecorder,

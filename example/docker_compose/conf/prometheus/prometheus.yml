@@ -9,8 +9,8 @@ scrape_configs:
     metrics_path: '/metrics'
     static_configs:
       - targets:
-        - 'velonetics_front:9090'
-        - 'velonetics_middle:9090'
-        - 'velonetics_back:9090'
+        - 'pucora_front:9090'
+        - 'pucora_middle:9090'
+        - 'pucora_back:9090'
         labels:
           app: kotel_example

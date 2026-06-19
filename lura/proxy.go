@@ -10,8 +10,8 @@ import (
 	"github.com/pucora/lura/v2/config"
 	"github.com/pucora/lura/v2/proxy"
 
-	kotelconfig "github.com/pucora/velonetics-otel/config"
-	"github.com/pucora/velonetics-otel/state"
+	kotelconfig "github.com/pucora/pucora-otel/config"
+	"github.com/pucora/pucora-otel/state"
 )
 
 func tracesMiddleware(next proxy.Proxy, mt *middlewareTracer) func(ctx context.Context, req *proxy.Request) (*proxy.Response, error) {

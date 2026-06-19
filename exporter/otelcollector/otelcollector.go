@@ -16,7 +16,7 @@ import (
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 
-	"github.com/pucora/velonetics-otel/config"
+	"github.com/pucora/pucora-otel/config"
 )
 
 // OtelCollector implements the traces exporter.

@@ -12,7 +12,7 @@ import (
 
 	"github.com/pucora/lura/v2/proxy"
 
-	"github.com/pucora/velonetics-otel/state"
+	"github.com/pucora/pucora-otel/state"
 )
 
 type middlewareTracer struct {

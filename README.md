@@ -1,4 +1,4 @@
-# Pucora OpenTelemetry (`velonetics-otel`)
+# Pucora OpenTelemetry (`pucora-otel`)
 OpenTelemetry building blocks to instrument [Pucora](https://pucora.io) and [Lura](https://luraproject.org/) based API Gateways.
 
 [Apache License 2.0](.LICENSE)
@@ -17,14 +17,14 @@ For a quick look at the observability the library can provide, check the
 
 In order to configure the open telemetry stack to instrument the API Gateway, a
 new entry must be added to the `ExtraConfig` root propertry of `ServiceConfig`
-using the `telemetry/opentelemetry` key, with the `velonetics-otel`'s configuration.
+using the `telemetry/opentelemetry` key, with the `pucora-otel`'s configuration.
 
 See the [configuration](https://pucora.io/docs/telemetry/opentelemetry/) of the component.
 
 In a visual way, this is the relation between the `exporters` configuration, and
 how we select as `metric_providers` or `trace_providers`:
 
-![velonetics_otel_exporters.svg](./doc/velonetics_otel_exporters.svg)
+![pucora_otel_exporters.svg](./doc/pucora_otel_exporters.svg)
 
 ### Layers, Traces and Metrics
 The most up to date documentation about the different supported layers, and the produced metrics and traces is available in the [Understanding OpenTelemetry layers and metrics](https://pucora.io/docs/telemetry/opentelemetry-layers-metrics/) documentation.
@@ -33,7 +33,7 @@ We can differentiate the processing of a request in Pucora in 3 main stages (eac
 including or wrapping the inner stage):
 
 - `global`: this part that comes before the `Lura`'s framework starts working with
-    the request. In the case of [Pucora CE](https://github.com/pucora/velonetics-ce),
+    the request. In the case of [Pucora CE](https://github.com/pucora/pucora-ce),
     this stage is implemented using [gin](https://github.com/gin-gonic/gin). See the [Data exposed in the global layer](https://pucora.io/docs/telemetry/opentelemetry-layers-metrics/#data-exposed-in-the-global-layer) and [its configuration options](https://pucora.io/docs/telemetry/opentelemetry/#global)
 
 - `proxy`: this is the `Lura`'s framework part where it deals with one of the

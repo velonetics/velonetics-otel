@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/pucora/velonetics-otel/config"
+	"github.com/pucora/pucora-otel/config"
 )
 
 type otelExpectedExporter struct {

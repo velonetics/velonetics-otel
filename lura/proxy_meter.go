@@ -9,8 +9,8 @@ import (
 
 	"github.com/pucora/lura/v2/proxy"
 
-	kotelconfig "github.com/pucora/velonetics-otel/config"
-	"github.com/pucora/velonetics-otel/state"
+	kotelconfig "github.com/pucora/pucora-otel/config"
+	"github.com/pucora/pucora-otel/state"
 )
 
 type middlewareMeter struct {

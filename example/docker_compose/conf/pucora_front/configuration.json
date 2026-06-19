@@ -1,68 +1,95 @@
 {
     "version": 3,
-    "name": "Back Pucora",
-    "port": 54446,
+    "name": "Front Pucora",
+    "port": 44444,
     "cache_ttl": "3600s",
     "timeout": "2500ms",
-    "host": [ "http://127.0.0.1:54446/" ],
-    "debug_endpoint": true,
+    "host": [ "http://pucora_middle:44445/" ],
     "endpoints": [
         {
-            "endpoint": "/back_fake/{something}",
-            "method": "GET",
+            "endpoint": "/fake/{something}",
             "concurrent_calls": 3,
             "backend": [
                 {
-                    "url_pattern": "/__debug/{something}",
-                    "mapping": {
-                        "message": "backend1"
-                    }
-                },
-                {
-                    "url_pattern": "/__debug/{something}/{something}",
-                    "mapping": {
-                        "message": "backend2"
-                    }
+                    "url_pattern": "/middle_fake/{something}"
                 }
             ]
         },
         {
-            "endpoint": "/back_combination/{id}",
+            "endpoint": "/combination/{id}",
             "backend": [
                 {
-                    "host": [
-                        "https://jsonplaceholder.typicode.com"
-                    ],
-                    "url_pattern": "/posts?userId={id}",
-                    "is_collection": true,
-                    "mapping": {
-                        "collection": "posts"
-                    }
+                    "url_pattern": "/middle_combination/{id}",
+                    "group": "front_1"
                 },
                 {
-                    "host": [
-                        "https://jsonplaceholder.typicode.com"
-                    ],
-                    "url_pattern": "/users/{id}",
-                    "mapping": {
-                        "email": "personal_email"
-                    }
+                    "url_pattern": "/middle_combination/{id}",
+                    "group": "front_2"
+                }
+            ]
+        },
+        {
+            "endpoint": "/direct/slow",
+            "backend": [
+                {
+                    "host": ["http://fakeapi:9876"],
+                    "url_pattern": "/foo.json",
+                    "group": "data"
+                },
+                {
+                    "host": ["http://fakeapi:9876"],
+                    "url_pattern": "/bar.json",
+                    "group": "data"
+                },
+                {
+                    "host": ["http://fakeapi:9876"],
+                    "url_pattern": "/stats"
+                }
+            ]
+        },
+        {
+            "endpoint": "/direct/drop",
+            "backend": [
+                {
+                    "host": ["http://fakeapi:9876"],
+                    "url_pattern": "/drop/"
+                },
+                {
+                    "host": ["http://fakeapi:9876"],
+                    "url_pattern": "/stats"
+                }
+            ]
+        },
+        {
+            "endpoint": "/direct/delayed",
+            "backend": [
+                {
+                    "host": ["http://fakeapi:9876"],
+                    "url_pattern": "/delayed/"
+                },
+                {
+                    "host": ["http://fakeapi:9876"],
+                    "url_pattern": "/file"
                 }
             ]
         }
     ],
     "extra_config": {
         "telemetry/opentelemetry": {
-            "service_name": "velonetics_back_service",
+            "service_name": "pucora_frontend_service",
+            "metric_reporting_period": 1,
+            "trace_sample_rate": 1,
             "layers": {
                 "global": {
                     "disable_metrics": false,
                     "disable_traces": false,
-                    "disable_propagation": false
+                    "disable_propagation": false,
+                    "report_headers": true
                 },
                 "proxy": {
                     "disable_metrics": false,
-                    "disable_traces": false
+                    "disable_traces": false,
+                    "report_headers": true
                 }, 
                 "backend": {
                     "metrics": {
@@ -87,7 +114,8 @@
                                 "key": "my_trace_attr",
                                 "value": "my_trace_val" 
                             }
-                        ]
+                        ],
+                        "report_headers": true
                     }
                 }
             },
@@ -95,7 +123,7 @@
                 "prometheus": [
                     {
                         "name": "local_prometheus",
-                        "port": 59093,
+                        "port": 9090,
                         "process_metrics": true,
                         "go_metrics": true
                     }
@@ -103,15 +131,15 @@
                 "otlp": [
                     {
                         "name": "local_tempo",
-                        "host": "127.0.0.1",
-                        "port": 53317,
+                        "host": "tempo",
+                        "port": 4317,
                         "use_http": false,
                         "disable_metrics": true
                     },
-                    {
+                    { 
                         "name": "local_jaeger",
-                        "host": "127.0.0.1",
-                        "port": 55317,
+                        "host": "jaeger",
+                        "port": 4317,
                         "use_http": false,
                         "disable_metrics": true
                     }

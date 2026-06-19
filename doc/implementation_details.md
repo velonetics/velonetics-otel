@@ -14,7 +14,7 @@ How the code is organized:
   for an instrumented http client. It has all the 
   
 - [config package](../config): this package contains the configuration
-  definitions for all the velonetics-otel library
+  definitions for all the pucora-otel library
   
 - [state package](../state): contains exporter instances
   and the meter and tracer instances created from a configuration
@@ -30,6 +30,6 @@ How the code is organized:
 - [router/gin](../router/gin): contains specifig gin middleware to
   instrument a gin router.
   
-- [example](../example): an example of how to use the velonetics-otel 
+- [example](../example): an example of how to use the pucora-otel 
   library: check the [example documentation](../example/README.md) for
   more info.

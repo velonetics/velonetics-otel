@@ -10,7 +10,7 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/pucora/velonetics-otel/state"
+	"github.com/pucora/pucora-otel/state"
 )
 
 type trackingHandler struct {

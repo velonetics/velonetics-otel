@@ -10,9 +10,9 @@ import (
 	luraconfig "github.com/pucora/lura/v2/config"
 	transport "github.com/pucora/lura/v2/transport/http/client"
 
-	otelconfig "github.com/pucora/velonetics-otel/config"
-	clienthttp "github.com/pucora/velonetics-otel/http/client"
-	otelstate "github.com/pucora/velonetics-otel/state"
+	otelconfig "github.com/pucora/pucora-otel/config"
+	clienthttp "github.com/pucora/pucora-otel/http/client"
+	otelstate "github.com/pucora/pucora-otel/state"
 )
 
 var defaultOpts = otelconfig.BackendOpts{

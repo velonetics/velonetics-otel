@@ -1,95 +1,48 @@
 {
     "version": 3,
-    "name": "Front Pucora",
-    "port": 44444,
+    "name": "Middle Pucora",
+    "port": 44445,
     "cache_ttl": "3600s",
     "timeout": "2500ms",
-    "host": [ "http://velonetics_middle:44445/" ],
+    "host": [ "http://pucora_back:44446/" ],
     "endpoints": [
         {
-            "endpoint": "/fake/{something}",
+            "endpoint": "/middle_fake/{something}",
             "concurrent_calls": 3,
             "backend": [
                 {
-                    "url_pattern": "/middle_fake/{something}"
+                    "url_pattern": "/back_fake/{something}"
                 }
             ]
         },
         {
-            "endpoint": "/combination/{id}",
+            "endpoint": "/middle_combination/{id}",
             "backend": [
                 {
-                    "url_pattern": "/middle_combination/{id}",
-                    "group": "front_1"
+                    "url_pattern": "/back_combination/{id}",
+                    "group": "middle_1"
                 },
                 {
-                    "url_pattern": "/middle_combination/{id}",
-                    "group": "front_2"
-                }
-            ]
-        },
-        {
-            "endpoint": "/direct/slow",
-            "backend": [
-                {
-                    "host": ["http://fakeapi:9876"],
-                    "url_pattern": "/foo.json",
-                    "group": "data"
-                },
-                {
-                    "host": ["http://fakeapi:9876"],
-                    "url_pattern": "/bar.json",
-                    "group": "data"
-                },
-                {
-                    "host": ["http://fakeapi:9876"],
-                    "url_pattern": "/stats"
-                }
-            ]
-        },
-        {
-            "endpoint": "/direct/drop",
-            "backend": [
-                {
-                    "host": ["http://fakeapi:9876"],
-                    "url_pattern": "/drop/"
-                },
-                {
-                    "host": ["http://fakeapi:9876"],
-                    "url_pattern": "/stats"
-                }
-            ]
-        },
-        {
-            "endpoint": "/direct/delayed",
-            "backend": [
-                {
-                    "host": ["http://fakeapi:9876"],
-                    "url_pattern": "/delayed/"
-                },
-                {
-                    "host": ["http://fakeapi:9876"],
-                    "url_pattern": "/file"
+                    "url_pattern": "/back_combination/{id}",
+                    "group": "middle_2"
                 }
             ]
         }
     ],
     "extra_config": {
         "telemetry/opentelemetry": {
-            "service_name": "velonetics_frontend_service",
+            "service_name": "pucora_middle_service",
             "metric_reporting_period": 1,
             "trace_sample_rate": 1,
             "layers": {
                 "global": {
                     "disable_metrics": false,
                     "disable_traces": false,
-                    "disable_propagation": false,
-                    "report_headers": true
+                    "disable_propagation": false
                 },
                 "proxy": {
                     "disable_metrics": false,
-                    "disable_traces": false,
-                    "report_headers": true
+                    "disable_traces": false
                 }, 
                 "backend": {
                     "metrics": {
@@ -100,7 +53,7 @@
                         "static_attributes": [
                             {
                                 "key": "my_metric_attr",
-                                "value": "my_metric_val"
+                                "value": "my_middle_metric"
                             }
                         ]
                     },
@@ -112,10 +65,9 @@
                         "static_attributes": [
                             {
                                 "key": "my_trace_attr",
-                                "value": "my_trace_val" 
+                                "value": "my_middle_trace" 
                             }
-                        ],
-                        "report_headers": true
+                        ]
                     }
                 }
             },
@@ -136,8 +88,8 @@
                         "use_http": false,
                         "disable_metrics": true
                     },
-                    { 
-                        "name": "local_jaeger",
+                    {
+                    "name": "local_jaeger",
                         "host": "jaeger",
                         "port": 4317,
                         "use_http": false,

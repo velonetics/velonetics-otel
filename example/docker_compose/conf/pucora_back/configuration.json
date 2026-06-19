@@ -4,7 +4,7 @@
     "port": 44446,
     "cache_ttl": "3600s",
     "timeout": "2500ms",
-    "host": [ "http://velonetics_back:44446/" ],
+    "host": [ "http://pucora_back:44446/" ],
     "debug_endpoint": true,
     "endpoints": [
         {
@@ -93,7 +93,7 @@
     ],
     "extra_config": {
         "telemetry/opentelemetry": {
-            "service_name": "velonetics_backend_service",
+            "service_name": "pucora_backend_service",
             "metric_reporting_period": 1,
             "trace_sample_rate": 1,
             "layers": {

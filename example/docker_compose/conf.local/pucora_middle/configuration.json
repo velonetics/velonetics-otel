@@ -31,7 +31,7 @@
     ],
     "extra_config": {
         "telemetry/opentelemetry": {
-            "service_name": "velonetics_middle_service",
+            "service_name": "pucora_middle_service",
             "metric_reporting_period": 1,
             "trace_sample_rate": 1,
             "layers": {
