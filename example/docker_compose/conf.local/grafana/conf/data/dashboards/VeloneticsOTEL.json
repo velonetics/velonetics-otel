@@ -2192,7 +2192,7 @@
         "type": "prometheus",
         "uid": "b9564da7-2fba-447a-934e-e0217745974e"
       },
-      "description": "Number of incomplete responses returned to the user on aggregation (matches X-Velonetics-Complete header)",
+      "description": "Number of incomplete responses returned to the user on aggregation (matches X-Pucora-Complete header)",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -8618,7 +8618,7 @@
           "uid": "b9564da7-2fba-447a-934e-e0217745974e"
         },
         "definition": "label_values(velonetics_proxy_duration_bucket,http_route)",
-        "description": "Velonetics exposed endpoint",
+        "description": "Pucora exposed endpoint",
         "hide": 0,
         "includeAll": true,
         "label": "Endpoint",
@@ -8742,7 +8742,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Velonetics OTEL",
+  "title": "Pucora OTEL",
   "uid": "d7e631a4-afbc-4267-91e8-b9492bcd801b",
   "version": 8,
   "weekStart": ""

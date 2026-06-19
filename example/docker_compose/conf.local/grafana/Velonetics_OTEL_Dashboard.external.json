@@ -6172,7 +6172,7 @@
           "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(velonetics_pipe_duration_count,url_path)",
-        "description": "Velonetics exposed endpoint",
+        "description": "Pucora exposed endpoint",
         "hide": 0,
         "includeAll": true,
         "multi": true,
@@ -6240,7 +6240,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Velonetics OTEL",
+  "title": "Pucora OTEL",
   "uid": "d7e631a4-afbc-4267-91e8-b9492bcd801b",
   "version": 6,
   "weekStart": ""

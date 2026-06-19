@@ -27,7 +27,7 @@
 # TO DECIDE
 
 - do we want to have the `service_name` to override the global ServiceConfig name for
-    the Velonetics gateway ?
+    the Pucora gateway ?
 
 - in `exporter/prometheus/prometheus.go` we could add a config option that will
     add a prefix to all reported metrics (using the `WithNamespace` option).

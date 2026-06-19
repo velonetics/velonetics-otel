@@ -14,7 +14,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/prometheus"
 	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
 
-	"github.com/velonetics/velonetics-otel/config"
+	"github.com/pucora/velonetics-otel/config"
 )
 
 // PrometheusCollector implemnts the metrics exporter

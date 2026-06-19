@@ -1,7 +1,7 @@
-// Package kotel adds opentelemetry instrumentation to a Velonetics instance
-// (or some other [Lura](https://github.com/velonetics/lura) based softawre)
+// Package kotel adds opentelemetry instrumentation to a Pucora instance
+// (or some other [Lura](https://github.com/pucora/lura) based softawre)
 //
-// In the Velonetics project, we can differentiate 3 main stages in the process
+// In the Pucora project, we can differentiate 3 main stages in the process
 // of handling a request:
 //   - the "router" stage: the part where the router plugins are run, and
 //     is the part from receiving the request, up to the point where the request
@@ -18,18 +18,18 @@ import (
 	"go.opentelemetry.io/contrib/propagators/autoprop"
 	"go.opentelemetry.io/otel"
 
-	lconfig "github.com/velonetics/lura/v2/config"
-	lcore "github.com/velonetics/lura/v2/core"
-	"github.com/velonetics/lura/v2/logging"
+	lconfig "github.com/pucora/lura/v2/config"
+	lcore "github.com/pucora/lura/v2/core"
+	"github.com/pucora/lura/v2/logging"
 
-	"github.com/velonetics/velonetics-otel/config"
-	"github.com/velonetics/velonetics-otel/exporter"
-	"github.com/velonetics/velonetics-otel/state"
+	"github.com/pucora/velonetics-otel/config"
+	"github.com/pucora/velonetics-otel/exporter"
+	"github.com/pucora/velonetics-otel/state"
 )
 
 // Register uses the ServiceConfig to instantiate the configured exporters.
 // It also sets the global exporter instances, the global propagation method, and
-// the global Velonetics otel state, so it can be used from anywhere.
+// the global Pucora otel state, so it can be used from anywhere.
 func Register(ctx context.Context, l logging.Logger, srvCfg lconfig.ServiceConfig) (func(), error) {
 	cfg, err := config.FromLura(srvCfg)
 	if err != nil {
@@ -44,7 +44,7 @@ func Register(ctx context.Context, l logging.Logger, srvCfg lconfig.ServiceConfi
 
 // RegisterWithConfig instantiates the configured exporters from an already
 // parsed config: sets the global exporter instances, the global propagation method, and
-// the global Velonetics otel state, so it can be used from anywhere.
+// the global Pucora otel state, so it can be used from anywhere.
 func RegisterWithConfig(ctx context.Context, l logging.Logger, cfg *config.ConfigData) (func(), error) {
 	shutdownFn := func() {}
 	if err := cfg.Validate(); err != nil {
@@ -112,7 +112,7 @@ func RegisterGlobalInstanceWithEnv(ctx context.Context, l logging.Logger,
 
 	version := serviceVersion
 	if version == "" {
-		version = lcore.VeloneticsVersion
+		version = lcore.PucoraVersion
 	}
 
 	s, err := state.NewWithVersionAndEnv(serviceName, globalStateCfg, version, env, me, te)

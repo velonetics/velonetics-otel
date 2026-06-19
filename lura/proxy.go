@@ -7,11 +7,11 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 
-	"github.com/velonetics/lura/v2/config"
-	"github.com/velonetics/lura/v2/proxy"
+	"github.com/pucora/lura/v2/config"
+	"github.com/pucora/lura/v2/proxy"
 
-	kotelconfig "github.com/velonetics/velonetics-otel/config"
-	"github.com/velonetics/velonetics-otel/state"
+	kotelconfig "github.com/pucora/velonetics-otel/config"
+	"github.com/pucora/velonetics-otel/state"
 )
 
 func tracesMiddleware(next proxy.Proxy, mt *middlewareTracer) func(ctx context.Context, req *proxy.Request) (*proxy.Response, error) {
@@ -167,8 +167,8 @@ func BackendFactory(bf proxy.BackendFactory) proxy.BackendFactory {
 		attrs := []attribute.KeyValue{
 			semconv.HTTPRequestMethodKey.String(cfg.Method),
 			semconv.HTTPRoute(urlPattern), // <- for traces we can use URLFull to not have the matched path
-			attribute.String("velonetics.endpoint.route", parentEndpoint),
-			attribute.String("velonetics.endpoint.method", cfg.ParentEndpointMethod),
+			attribute.String("pucora.endpoint.route", parentEndpoint),
+			attribute.String("pucora.endpoint.method", cfg.ParentEndpointMethod),
 		}
 
 		// Add configured static attributes

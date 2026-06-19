@@ -1,2 +1,2 @@
 #!/bin/bash
-curl http://velonetics:velonetics@localhost:53000/api/datasources
+curl http://pucora:pucora@localhost:53000/api/datasources

@@ -10,7 +10,7 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/velonetics/velonetics-otel/state"
+	"github.com/pucora/velonetics-otel/state"
 )
 
 type trackingHandler struct {
@@ -101,7 +101,7 @@ func NewTrackingHandlerWithTrustedProxies(next http.Handler, trustedProxies []st
 
 	var t *tracesHTTP
 	if !gCfg.DisableTraces {
-		tracesAttrs := []attribute.KeyValue{attribute.String("velonetics.stage", "global")}
+		tracesAttrs := []attribute.KeyValue{attribute.String("pucora.stage", "global")}
 		for _, kv := range gCfg.TracesStaticAttributes {
 			if kv.Key != "" && kv.Value != "" {
 				tracesAttrs = append(tracesAttrs, attribute.String(kv.Key, kv.Value))

@@ -12,8 +12,8 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 
-	otelio "github.com/velonetics/velonetics-otel/io"
-	"github.com/velonetics/velonetics-otel/state"
+	otelio "github.com/pucora/velonetics-otel/io"
+	"github.com/pucora/velonetics-otel/state"
 )
 
 // TransportOptions defines the detail we want for

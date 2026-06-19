@@ -4,11 +4,11 @@ import (
 	"context"
 	"net/http"
 
-	kotelhttpserver "github.com/velonetics/velonetics-otel/http/server"
-	"github.com/velonetics/velonetics-otel/state"
-	luraconfig "github.com/velonetics/lura/v2/config"
-	"github.com/velonetics/lura/v2/logging"
-	luragin "github.com/velonetics/lura/v2/router/gin"
+	kotelhttpserver "github.com/pucora/velonetics-otel/http/server"
+	"github.com/pucora/velonetics-otel/state"
+	luraconfig "github.com/pucora/lura/v2/config"
+	"github.com/pucora/lura/v2/logging"
+	luragin "github.com/pucora/lura/v2/router/gin"
 )
 
 func GlobalRunServer(_ logging.Logger, next luragin.RunServerFunc) luragin.RunServerFunc {

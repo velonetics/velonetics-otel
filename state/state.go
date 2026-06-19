@@ -19,11 +19,11 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	nooptrace "go.opentelemetry.io/otel/trace/noop"
 
-	"github.com/velonetics/velonetics-otel/exporter"
+	"github.com/pucora/velonetics-otel/exporter"
 )
 
 const (
-	providerName string = "io.velonetics.velonetics-otel"
+	providerName string = "io.pucora.velonetics-otel"
 )
 
 // OTEL defines the interface to obtain observability
@@ -61,7 +61,7 @@ type OTELState struct {
 }
 
 // NewWithVersion create a new OTELState with a version for
-// the Velonetics service, with the provided metrics and traces exporters
+// the Pucora service, with the provided metrics and traces exporters
 func NewWithVersion(serviceName string, cfg *OTELStateConfig, version string,
 	me map[string]exporter.MetricReader, te map[string]exporter.SpanExporter,
 ) (*OTELState, error) {
@@ -69,7 +69,7 @@ func NewWithVersion(serviceName string, cfg *OTELStateConfig, version string,
 }
 
 // NewWithVersionAndEnv create a new OTELState with a version for
-// the Velonetics service, with the provided metrics and traces exporters
+// the Pucora service, with the provided metrics and traces exporters
 func NewWithVersionAndEnv(serviceName string, cfg *OTELStateConfig, version string,
 	env string, me map[string]exporter.MetricReader, te map[string]exporter.SpanExporter,
 ) (*OTELState, error) {

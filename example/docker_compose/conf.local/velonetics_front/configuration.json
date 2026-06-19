@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "name": "Front Velonetics",
+    "name": "Front Pucora",
     "port": 54444,
     "cache_ttl": "3600s",
     "timeout": "2500ms",

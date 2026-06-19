@@ -45,8 +45,8 @@ services:
     ports:
       - "53000:3000"
     environment:
-      GF_SECURITY_ADMIN_USER: velonetics
-      GF_SECURITY_ADMIN_PASSWORD: velonetics
+      GF_SECURITY_ADMIN_USER: pucora
+      GF_SECURITY_ADMIN_PASSWORD: pucora
       GF_AUT_ANONYMOUS_ENABLED: "true"
     volumes:
       - "vol_local_grafana:/var/lib/grafana"

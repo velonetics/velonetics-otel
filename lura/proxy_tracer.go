@@ -10,9 +10,9 @@ import (
 	"go.opentelemetry.io/otel/semconv/v1.21.0"
 	"go.opentelemetry.io/otel/trace"
 
-	"github.com/velonetics/lura/v2/proxy"
+	"github.com/pucora/lura/v2/proxy"
 
-	"github.com/velonetics/velonetics-otel/state"
+	"github.com/pucora/velonetics-otel/state"
 )
 
 type middlewareTracer struct {
@@ -32,7 +32,7 @@ func newMiddlewareTracer(s state.OTEL, name string, stageName string, reportHead
 	}
 	tAttrs := make([]attribute.KeyValue, 0, len(attrs)+1)
 	tAttrs = append(tAttrs, attrs...)
-	tAttrs = append(tAttrs, attribute.String("velonetics.stage", stageName))
+	tAttrs = append(tAttrs, attribute.String("pucora.stage", stageName))
 	var sh map[string]bool
 	if len(skipHeaders) > 0 {
 		sh = make(map[string]bool, len(skipHeaders))

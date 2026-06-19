@@ -28,23 +28,23 @@ import (
 	"syscall"
 
 	"github.com/gin-gonic/gin"
-	"github.com/velonetics/lura/v2/config"
-	"github.com/velonetics/lura/v2/logging"
-	"github.com/velonetics/lura/v2/proxy"
-	veloneticsgin "github.com/velonetics/lura/v2/router/gin"
-	"github.com/velonetics/lura/v2/transport/http/client"
-	"github.com/velonetics/lura/v2/transport/http/server"
+	"github.com/pucora/lura/v2/config"
+	"github.com/pucora/lura/v2/logging"
+	"github.com/pucora/lura/v2/proxy"
+	veloneticsgin "github.com/pucora/lura/v2/router/gin"
+	"github.com/pucora/lura/v2/transport/http/client"
+	"github.com/pucora/lura/v2/transport/http/server"
 
-	kotel "github.com/velonetics/velonetics-otel"
-	otellura "github.com/velonetics/velonetics-otel/lura"
-	otelgin "github.com/velonetics/velonetics-otel/router/gin"
+	kotel "github.com/pucora/velonetics-otel"
+	otellura "github.com/pucora/velonetics-otel/lura"
+	otelgin "github.com/pucora/velonetics-otel/router/gin"
 )
 
 func main() {
 	port := flag.Int("p", 0, "Port of the service")
 	logLevel := flag.String("l", "ERROR", "Logging level")
 	debug := flag.Bool("d", false, "Enable the debug")
-	configFile := flag.String("c", "/etc/velonetics/configuration.json", "Path to the configuration filename")
+	configFile := flag.String("c", "/etc/pucora/configuration.json", "Path to the configuration filename")
 	flag.Parse()
 
 	sigs := make(chan os.Signal, 1)
@@ -73,7 +73,7 @@ func main() {
 		serviceConfig.Port = *port
 	}
 
-	logger, _ := logging.NewLogger(*logLevel, os.Stdout, "[VELONETICS]")
+	logger, _ := logging.NewLogger(*logLevel, os.Stdout, "[PUCORA]")
 
 	shutdownFn, err := kotel.Register(ctx, logger, serviceConfig)
 	if err != nil {
@@ -104,7 +104,7 @@ func main() {
 	engine.HandleMethodNotAllowed = true
 	engine.ContextWithFallback = true // <- this is important for trace span propagation
 
-	// setup the velonetics router
+	// setup the pucora router
 	routerFactory := veloneticsgin.NewFactory(veloneticsgin.Config{
 		Engine:         engine,
 		ProxyFactory:   pf,

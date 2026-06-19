@@ -4,7 +4,7 @@ version = 1
 name = "go"
 
   [analyzers.meta]
-  import_root = "github.com/velonetics/velonetics-otel"
+  import_root = "github.com/pucora/velonetics-otel"
 
 [[transformers]]
 name = "gofmt"

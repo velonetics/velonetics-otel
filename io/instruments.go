@@ -11,7 +11,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	nooptrace "go.opentelemetry.io/otel/trace/noop"
 
-	kotelconfig "github.com/velonetics/velonetics-otel/config"
+	kotelconfig "github.com/pucora/velonetics-otel/config"
 )
 
 // instruments holds the instruments for the transfer of

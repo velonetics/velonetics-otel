@@ -3,7 +3,7 @@
 
 # Grafana
 
-Go to `http://localhost:3000` and login with `velonetics` :: `velonetics`.
+Go to `http://localhost:3000` and login with `pucora` :: `pucora`.
 
 
 # Generate traces

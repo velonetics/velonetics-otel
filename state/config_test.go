@@ -3,8 +3,8 @@ package state
 import (
 	"testing"
 
-	"github.com/velonetics/velonetics-otel/config"
-	luraconfig "github.com/velonetics/lura/v2/config"
+	"github.com/pucora/velonetics-otel/config"
+	luraconfig "github.com/pucora/lura/v2/config"
 )
 
 func TestEndpointPipeConfigOverride(t *testing.T) {

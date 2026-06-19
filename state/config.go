@@ -1,8 +1,8 @@
 package state
 
 import (
-	"github.com/velonetics/velonetics-otel/config"
-	luraconfig "github.com/velonetics/lura/v2/config"
+	"github.com/pucora/velonetics-otel/config"
+	luraconfig "github.com/pucora/lura/v2/config"
 )
 
 type Config interface {

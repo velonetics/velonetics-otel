@@ -10,7 +10,7 @@ import (
 	"go.opentelemetry.io/otel/propagation"
 	"go.opentelemetry.io/otel/trace"
 
-	otelhttp "github.com/velonetics/velonetics-otel/http"
+	otelhttp "github.com/pucora/velonetics-otel/http"
 )
 
 // TransportTracesOptions defines what information

@@ -7,7 +7,7 @@ services:
     domainname: velonetics_front
     image: velonetics-otel-example:latest
     volumes:
-      - "./conf/velonetics_front:/etc/velonetics"
+      - "./conf/velonetics_front:/etc/pucora"
     ports:
       - "44444:44444"
       - "9091:9090"
@@ -15,7 +15,7 @@ services:
     domainname: velonetics_middle
     image: velonetics-otel-example:latest
     volumes:
-      - "./conf/velonetics_middle:/etc/velonetics"
+      - "./conf/velonetics_middle:/etc/pucora"
     ports:
       - "44445:44445"
       - "9092:9090"
@@ -23,7 +23,7 @@ services:
     domainname: velonetics_back
     image: velonetics-otel-example:latest
     volumes:
-      - "./conf/velonetics_back:/etc/velonetics"
+      - "./conf/velonetics_back:/etc/pucora"
     ports:
       - "44446:44446"
       - "9093:9090"
@@ -64,8 +64,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      GF_SECURITY_ADMIN_USER: velonetics
-      GF_SECURITY_ADMIN_PASSWORD: velonetics
+      GF_SECURITY_ADMIN_USER: pucora
+      GF_SECURITY_ADMIN_PASSWORD: pucora
       GF_AUT_ANONYMOUS_ENABLED: "true"
     volumes:
       - "vol_grafana:/var/lib/grafana"

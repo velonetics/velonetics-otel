@@ -1,5 +1,5 @@
 // Package config defines the configuration to be used to setup
-// the metrics and traces for each stage of a Velonetics instances
+// the metrics and traces for each stage of a Pucora instances
 // as well as the level of detail we want for each stage.
 package config
 
@@ -128,14 +128,14 @@ type PrometheusExporter struct {
 }
 
 // LayersOpts contains the level of telemetry detail
-// that we want for each Velonetics stage
+// that we want for each Pucora stage
 type LayersOpts struct {
 	Global  *GlobalOpts  `json:"global"`
 	Pipe    *PipeOpts    `json:"proxy"`
 	Backend *BackendOpts `json:"backend"`
 }
 
-// GlobalOpts has the options for the Velonetics
+// GlobalOpts has the options for the Pucora
 // http handler stage.
 // We can select if we want to disable the metrics,
 // the traces, and / or the trace propagation.
@@ -150,7 +150,7 @@ type GlobalOpts struct {
 	SemConv                 string     `json:"semantic_convention"`
 }
 
-// PipeOpts has the options for the Velonetics pipe stage
+// PipeOpts has the options for the Pucora pipe stage
 // to disable metrics and traces.
 type PipeOpts struct {
 	DisableMetrics          bool       `json:"disable_metrics"`

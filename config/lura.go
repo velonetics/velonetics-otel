@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	luraconfig "github.com/velonetics/lura/v2/config"
+	luraconfig "github.com/pucora/lura/v2/config"
 )
 
 const (
@@ -33,7 +33,7 @@ func FromLura(srvCfg luraconfig.ServiceConfig) (*ConfigData, error) {
 		if srvCfg.Name != "" {
 			cfg.ServiceName = srvCfg.Name
 		} else {
-			cfg.ServiceName = "Velonetics"
+			cfg.ServiceName = "Pucora"
 		}
 	}
 

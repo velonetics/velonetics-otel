@@ -35,11 +35,11 @@ run_local: srv
 
 kill:
 	cd ./docker_compose && docker-compose -p velonetics_otel_local -f compose.local.yaml down
-	@ps -aux | grep 'srv.*velonetics' | grep -v 'grep' | sed "s/[[:space:]]\+/ /g" | cut -d ' ' -f 2 | xargs kill
+	@ps -aux | grep 'srv.*pucora' | grep -v 'grep' | sed "s/[[:space:]]\+/ /g" | cut -d ' ' -f 2 | xargs kill
 
 kill_srv:
-	@ps -aux | grep 'srv.*velonetics' | grep -v 'grep' | sed "s/[[:space:]]\+/ /g" | cut -d ' ' -f 2 | xargs kill
+	@ps -aux | grep 'srv.*pucora' | grep -v 'grep' | sed "s/[[:space:]]\+/ /g" | cut -d ' ' -f 2 | xargs kill
 
 dbg:
-	dlv debug ./server --wd . -- -p 7979 -c ./velonetics.json
+	dlv debug ./server --wd . -- -p 7979 -c ./pucora.json
 .PHONY: dbg

@@ -7,12 +7,12 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/semconv/v1.21.0"
 
-	luraconfig "github.com/velonetics/lura/v2/config"
-	transport "github.com/velonetics/lura/v2/transport/http/client"
+	luraconfig "github.com/pucora/lura/v2/config"
+	transport "github.com/pucora/lura/v2/transport/http/client"
 
-	otelconfig "github.com/velonetics/velonetics-otel/config"
-	clienthttp "github.com/velonetics/velonetics-otel/http/client"
-	otelstate "github.com/velonetics/velonetics-otel/state"
+	otelconfig "github.com/pucora/velonetics-otel/config"
+	clienthttp "github.com/pucora/velonetics-otel/http/client"
+	otelstate "github.com/pucora/velonetics-otel/state"
 )
 
 var defaultOpts = otelconfig.BackendOpts{
@@ -76,8 +76,8 @@ func InstrumentedHTTPClientFactory(clientFactory transport.HTTPClientFactory,
 	attrs := []attribute.KeyValue{
 		semconv.HTTPRequestMethodKey.String(cfg.Method),
 		semconv.HTTPRoute(urlPattern), // <- for traces we can use URLFull to not have the matched path
-		attribute.String("velonetics.endpoint.route", parentEndpoint),
-		attribute.String("velonetics.endpoint.method", cfg.ParentEndpointMethod),
+		attribute.String("pucora.endpoint.route", parentEndpoint),
+		attribute.String("pucora.endpoint.method", cfg.ParentEndpointMethod),
 	}
 
 	metricAttrs := attrs
@@ -91,7 +91,7 @@ func InstrumentedHTTPClientFactory(clientFactory transport.HTTPClientFactory,
 		len(attrs)+1+len(opts.Traces.StaticAttributes))
 	copy(traceAttrs, attrs)
 	traceAttrs = append(traceAttrs,
-		attribute.String("velonetics.stage", "backend-request"))
+		attribute.String("pucora.stage", "backend-request"))
 	for _, kv := range opts.Traces.StaticAttributes {
 		if kv.Key != "" && kv.Value != "" {
 			traceAttrs = append(traceAttrs, attribute.String(kv.Key, kv.Value))

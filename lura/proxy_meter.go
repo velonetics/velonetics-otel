@@ -7,10 +7,10 @@ import (
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/metric"
 
-	"github.com/velonetics/lura/v2/proxy"
+	"github.com/pucora/lura/v2/proxy"
 
-	kotelconfig "github.com/velonetics/velonetics-otel/config"
-	"github.com/velonetics/velonetics-otel/state"
+	kotelconfig "github.com/pucora/velonetics-otel/config"
+	"github.com/pucora/velonetics-otel/state"
 )
 
 type middlewareMeter struct {
@@ -30,7 +30,7 @@ func newMiddlewareMeter(s state.OTEL, stageName string, attrs []attribute.KeyVal
 		return nil, errors.New("OTEL state returned nil meter")
 	}
 	var err error
-	durationName := "velonetics." + stageName + ".duration"
+	durationName := "pucora." + stageName + ".duration"
 	duration, err := meter.Float64Histogram(durationName, kotelconfig.TimeBucketsOpt)
 	if err != nil {
 		return nil, err

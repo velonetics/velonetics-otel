@@ -12,7 +12,7 @@ import (
 	"go.opentelemetry.io/otel/semconv/v1.21.0"
 	v127 "go.opentelemetry.io/otel/semconv/v1.27.0"
 
-	kotelconfig "github.com/velonetics/velonetics-otel/config"
+	kotelconfig "github.com/pucora/velonetics-otel/config"
 )
 
 // TransportMetricsOptions contains the options to enable / disable
@@ -58,7 +58,7 @@ type transportMetrics struct {
 	dnsLatency     metric.Float64Histogram
 	tlsLatency     metric.Float64Histogram
 
-	// to identify the source of the request (in Velonetics the front facing endpoint)
+	// to identify the source of the request (in Pucora the front facing endpoint)
 	clientName string
 }
 

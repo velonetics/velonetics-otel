@@ -2,14 +2,14 @@ package gin
 
 import (
 	"github.com/gin-gonic/gin"
-	luraconfig "github.com/velonetics/lura/v2/config"
-	"github.com/velonetics/lura/v2/proxy"
-	veloneticsgin "github.com/velonetics/lura/v2/router/gin"
+	luraconfig "github.com/pucora/lura/v2/config"
+	"github.com/pucora/lura/v2/proxy"
+	veloneticsgin "github.com/pucora/lura/v2/router/gin"
 	"go.opentelemetry.io/otel/attribute"
 
-	kotelconfig "github.com/velonetics/velonetics-otel/config"
-	kotelserver "github.com/velonetics/velonetics-otel/http/server"
-	otelstate "github.com/velonetics/velonetics-otel/state"
+	kotelconfig "github.com/pucora/velonetics-otel/config"
+	kotelserver "github.com/pucora/velonetics-otel/http/server"
+	otelstate "github.com/pucora/velonetics-otel/state"
 )
 
 // New wraps a handler factory adding some simple instrumentation to the generated handlers

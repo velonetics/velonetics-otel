@@ -10,13 +10,13 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-type VeloneticsContextTrackingTypeKey string
+type PucoraContextTrackingTypeKey string
 
 const (
-	// VeloneticsContextOTELStrKey is a special key to be used when there
+	// PucoraContextOTELStrKey is a special key to be used when there
 	// is no way to obtain the span context from an inner context
 	// (like when gin has not the fallback option enabled in the engine).
-	krakenDContextTrackingStrKey VeloneticsContextTrackingTypeKey = "VeloneticsD-Context-OTEL"
+	krakenDContextTrackingStrKey PucoraContextTrackingTypeKey = "PucoraD-Context-OTEL"
 )
 
 type tracking struct {

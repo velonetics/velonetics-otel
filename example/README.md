@@ -9,7 +9,7 @@ make image
 cd docker_compose && make up
 ```
 
-## Run local velonetics instances and other services in docker compose
+## Run local pucora instances and other services in docker compose
 
 Since the docker-compose environment runs in its own network, in order to reach
 your local running services, you need to provide it with your network visible ip:
@@ -30,11 +30,11 @@ make run
 # What do you get
 
 By running the example, you spawn 3 servers based on the Lura framework (we could
-say the example is a super simplified Velonetics CE).
+say the example is a super simplified Pucora CE).
 
 - `velonetics_front`: the one to receive the requests
-- `velonetics_middle`: a middle velonetics to check how traces are propagated
-- `velonetics_back`: a back velonetics that makes request to `https://jsonplaceholder.typicode.com` to
+- `velonetics_middle`: a middle pucora to check how traces are propagated
+- `velonetics_back`: a back pucora that makes request to `https://jsonplaceholder.typicode.com` to
     get some dummy data.
     
 The config files can be found in:
@@ -52,7 +52,7 @@ There is a bash script to make some requests, that you can run with:
 bash ./make_request.sh
 ```
 
-(You might want to edit the script to point to the dockerized version of the velonetics frontend
+(You might want to edit the script to point to the dockerized version of the pucora frontend
 server or the local one).
 
 # Access the dashboards
@@ -60,6 +60,6 @@ server or the local one).
 In both, the dockerized and the local options, you will end with some containers running some
 services that you can use to check the metrics / traces:
 
-- Grafana: at http://localhost:3000 , with the username: `velonetics` and the password: `velonetics` as
+- Grafana: at http://localhost:3000 , with the username: `pucora` and the password: `pucora` as
     admin users
 - Jaeger: at http://localhost:16686.

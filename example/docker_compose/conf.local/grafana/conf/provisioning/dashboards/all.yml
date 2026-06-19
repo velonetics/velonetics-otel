@@ -8,4 +8,4 @@ providers:
   disableDeletion: false
   updateIntervalSeconds: 60
   options:
-    path: /var/lib/grafana/dashboards/VeloneticsOTEL.json
+    path: /var/lib/grafana/dashboards/PucoraOTEL.json

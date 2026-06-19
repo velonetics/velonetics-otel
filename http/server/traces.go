@@ -9,7 +9,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 	"go.opentelemetry.io/otel/trace"
 
-	otelhttp "github.com/velonetics/velonetics-otel/http"
+	otelhttp "github.com/pucora/velonetics-otel/http"
 )
 
 type tracesHTTP struct {

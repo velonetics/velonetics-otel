@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	lconfig "github.com/velonetics/lura/v2/config"
-	"github.com/velonetics/lura/v2/logging"
+	lconfig "github.com/pucora/lura/v2/config"
+	"github.com/pucora/lura/v2/logging"
 )
 
 func TestGlobalConfig(t *testing.T) {
